@@ -1,0 +1,21 @@
+<div>
+    <form #node="ngForm" (ngSubmit)="onSubmitNode(node.value)">
+        <label for="node">Node : </label>
+        <input type="text" name='Node' ngModel>
+        <input type="submit" value="Add Node">
+    </form>
+</div>
+<div>
+    <form #edge="ngForm" (ngSubmit)="onSubmitEdge(edge.value)">
+        <label for="edge">Create Edge : </label>
+        <br>
+        FROM:
+        <input type="text" name='from' ngModel>
+        <br>
+        TO:
+        <input type="text" name='to' ngModel>
+        <br>
+        <input type="submit" value="Create Edge">
+    </form>
+</div>
+
