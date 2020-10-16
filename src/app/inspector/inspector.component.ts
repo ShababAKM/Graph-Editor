@@ -1,4 +1,5 @@
 import { Component,Input, OnInit } from '@angular/core';
+import { ANY_STATE } from '@angular/core/src/animation/animation_constants';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import * as go from 'gojs';
 @Component({
@@ -11,15 +12,42 @@ export class InspectorComponent implements OnInit {
   public model : go.Model;
   ngOnInit() {
   }
+  link: Array<{ from: string, to: number }> = []; 
+  nodeList:Array<string>=[];
   onSubmitNode(value: any) {
-    this.model.startTransaction();
-    this.model.addNodeData({ key: value.Node , color:'green'});
-    this.model.commitTransaction();
-  }
-  onSubmitEdge(value: any) {
-    this.model.startTransaction();
-    (this.model as go.GraphLinksModel).addLinkData({ from: value.from, to: value.to, color: 'blue'});
-    this.model.commitTransaction();
-  }
+    if (Number(value.Node) <= 50 && Number(value.Node)>0)
+    {
+      this.model.startTransaction();
+      if ((this.model as go.GraphLinksModel).findNodeDataForKey(value.Node) == null) {
+        this.model.addNodeData({ key: value.Node, color: 'green' });
+        this.nodeList.push(value.Node);
+        console.log(this.nodeList);
+      }
+      this.model.commitTransaction();
+    }
 
+  }
+  flag:boolean=false;
+  onSubmitEdge(value: any) {
+    if(value.from!=value.to){
+    this.flag=false;
+    for (var i = 0; i < this.link.length; i++) {
+      if(this.link[i]==value)
+      {this.flag=true;}
+    }
+    if(this.flag==false)
+    { 
+      this.link.push(value);
+      this.model.startTransaction();
+      (this.model as go.GraphLinksModel).addLinkData({ from: value.from, to: value.to, color: 'blue' });
+      this.model.commitTransaction();
+
+    }
+  }
+  }
+  isDisplay=false;
+  toggleDisplay(){
+    this.isDisplay = !this.isDisplay;
+  }
 }
+//console.log();

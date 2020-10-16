@@ -18,4 +18,8 @@
         <input type="submit" value="Create Edge">
     </form>
 </div>
+<div *ngIf="isDisplay">
+        {{nodeList}}
+</div>
+<button (click)="toggleDisplay()">Toggle Node List</button>
 
