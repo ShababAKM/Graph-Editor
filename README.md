@@ -1,5 +1,5 @@
 # project Description
-for this project used Angular 2 & GoJS librery
+for this project used Angular 2 & GoJS librery is used
  a very simple graph editor
  - In the angular project,
    - Create nodes by an "add" button
