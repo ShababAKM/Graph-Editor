@@ -1,3 +1,25 @@
+# project Description
+for this project used Angular 2 & GoJS librery is used
+ a very simple graph editor
+ - In the angular project,
+   - Create nodes by an "add" button
+   - Each node displayed by a green circle with a black border
+   - Each node freely movable via drag&drop
+   - Each node have a number. The number of a node 
+displayed at its center, one central control button toggle the
+display of all numbers
+   - Two text boxes (one for each node number) and a button serves
+the purpose of adding edges. Each Edge displayed by a blue line
+
+
+
+
+
+
+
+
+
+
 # Graph
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.28.3.
