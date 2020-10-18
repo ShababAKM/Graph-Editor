@@ -47,7 +47,13 @@ export class InspectorComponent implements OnInit {
   }
   isDisplay=false;
   toggleDisplay(){
-    this.isDisplay = !this.isDisplay;
+    //this.isDisplay = !this.isDisplay;
+    this.model.commit(function (m) {
+      // alternate between lightblue and lightgreen colors
+      var oldstroke = m.modelData.toggle;
+      var newstroke = (oldstroke === "green" ? "black" : "green");
+      m.set(m.modelData, "toggle", newstroke);
+    });
   }
 }
 //console.log();

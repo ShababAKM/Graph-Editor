@@ -23,8 +23,9 @@ export class DiagramComponent implements OnInit {
         $(go.Shape, "Circle", { stroke:"black",strokeWidth: 2.5, fill: "white" },
           new go.Binding("fill", "color")),
         $(go.TextBlock,
-          { margin: 8, font: "bold 14px sans-serif", stroke: '#333' },
-          new go.Binding("text", "key"))
+          { margin: 8, font: "bold 14px sans-serif", stroke: 'black' },
+          new go.Binding("text", "key"),
+          new go.Binding("stroke", "toggle").ofModel())
       );
     this.diagram.linkTemplate =
       $(go.Link,
@@ -33,7 +34,7 @@ export class DiagramComponent implements OnInit {
           { strokeWidth: 2 },
           new go.Binding("stroke", "color")),
         $(go.Shape,
-          { toArrow: "Standard", stroke: null })
+          { toArrow: "Standard", stroke: "blue" })
       );
     this.diagram.model = this.model;
   }
